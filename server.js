@@ -14,7 +14,7 @@ mongoose
   }); 
 // create the app
 const app = express()
-const router = require('./routes/index')
+const router = require('./api/routes/index')
 app.use('/',router)
 const port = process.env.PORT || 3000
 app.listen(port,()=>console.log(`Server on ${port}` ))
