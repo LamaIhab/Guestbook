@@ -1,0 +1,23 @@
+{
+  "name": "Guestbook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LamaIhab/Guestbook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LamaIhab/Guestbook/issues"
+  },
+  "homepage": "https://github.com/LamaIhab/Guestbook#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
