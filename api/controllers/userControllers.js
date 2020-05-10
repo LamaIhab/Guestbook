@@ -31,14 +31,20 @@ const signUp = async(req,res) =>{
 const logIn = async(req,res)=>{
     try{
         const {userName,password}= req.body
-        const user = User.find({userName:userName}) // checking to see if username exists
-        if(!user)
-        res.json({msg:'this user name does not exist'})
-        else if(user.password!==password){ // wrong password
-            res.json({msg:'incorrect password'})
+        const user = await User.find({userName:userName}) // checking to see if username exists
+        
+        if(user.length===0){
+        res.json({msg:'this user name does not exist'})}
+       
+        else {
+            const password2 = user[0].password
+            if(password2!==password){ // wrong password
+            res.json({msg:'incorrect password'})}
+            else
+            res.json({msg:'signing in successfull!!',data:userName})
         }
-        else
-        res.json({msg:'signing in successfull!!',data:userName})
+    
+     
 
     }
     catch(error){
