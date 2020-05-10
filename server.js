@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose') // for mongodb as database
+const users = require('./api/routes/users.route') // to use the users routes and functionality
 // connecting to database
 const db = require('./config/key_dev').mongoURI
 mongoose
@@ -15,8 +16,6 @@ mongoose
 // create the app
 const app = express()
 app.use(express.json())
-// to use the users routes and functionality
-const users = require('./api/routes/users.route')
 app.use('/',users)
 const port = process.env.PORT || 3000
 app.listen(port,()=>console.log(`Server on ${port}` ))
