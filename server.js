@@ -14,7 +14,9 @@ mongoose
   }); 
 // create the app
 const app = express()
-const router = require('./api/routes/index')
-app.use('/',router)
+app.use(express.json())
+// to use the users routes and functionality
+const users = require('./api/routes/users.route')
+app.use('/',users)
 const port = process.env.PORT || 3000
 app.listen(port,()=>console.log(`Server on ${port}` ))
