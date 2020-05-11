@@ -1,6 +1,7 @@
 import React from 'react';
 import LogInForm from './LogInForm'
 import SignUpForm from './SignUpForm'
+import AllMessages from './AllMessages';
 class App extends React.Component {
   render(){
     return(
@@ -8,6 +9,7 @@ class App extends React.Component {
     <h1>hello</h1>
     <LogInForm />
     <SignUpForm />
+    <AllMessages />
      
     </div>
     )

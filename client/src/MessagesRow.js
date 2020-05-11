@@ -2,12 +2,11 @@ import React from 'react'
 import axios from 'axios'
 
 export default class MessagesRow extends React.Component{
-    state={
-        id:'',
-        username:'',
-        description:'',
-        time:''
-
+    state = {
+        username:this.props.message.username,
+        description:this.props.message.description,
+        time:this.props.message.time,
+        id:this.props.message._id
     }
     editMsg=()=>{
 
@@ -19,15 +18,17 @@ export default class MessagesRow extends React.Component{
 
     }
     render(){
+        console.log(this.props.message.username+'hiiiii')
         return(
             <div style ={itemStyle}>
-                <h1>{this.state.username}</h1>:{this.state.description}
-                <br/>
-                <h1>{this.state.time}</h1>
-                <br/>
-                <button title='edit' onClick={this.editMsg} />
-                <button title='reply' onClick = {this.replyMsg} />
-                <button title = 'delete' onClick = {this.deleteMsg} />
+           
+                {this.state.username}:{this.state.description}
+                
+                {this.state.time}
+                
+                <button  onClick={this.editMsg}>Edit</button>
+                <button  onClick = {this.replyMsg}>Reply</button>
+                <button  onClick = {this.deleteMsg} >Delete</button>
 
             </div>
 
@@ -35,6 +36,6 @@ export default class MessagesRow extends React.Component{
     }
 }
 const itemStyle = {
-    backgroundColor:'#f4f4f4'
+    backgroundColor:'#E6E6FA'
 
 }
