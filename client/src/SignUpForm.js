@@ -13,13 +13,23 @@ export default class SignUpForm extends React.Component{
     }
     signUp=(e)=>{
         e.preventDefault()
+        if(this.state.userName==='')
+        alert('username cannot be empty')
+        else if(this.state.displayName==='')
+        alert('display name cannot be empty')
+       else if(this.state.password==='')
+        alert('password cannot be empty')
         axios.post('http://localhost:5000/signUp',{userName:this.state.userName,displayName:this.state.displayName,password:this.state.password}).then(res=>{
-            console.log(res.data.msg)
+           alert(res.data.msg)
         }).catch(err=>{console.log(err)})
     }
     render(){
         return(
             <div>
+             
+                
+
+          
                 <form onSubmit = {this.signUp}>
                 <label>Full Name</label>
                 <input name = 'displayName' type='text' placeholder='fullname' value={this.state.displayName} onChange= {this.onChange}/>

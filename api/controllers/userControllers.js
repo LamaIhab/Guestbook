@@ -15,7 +15,8 @@ const signUp = async(req,res) =>{
   const validate = signUpVal(req.body)
   if(validate.error){
      
-      return res.status(400).send({ error: validate.error.details[0].message })
+      //return res.status(400).send({ error: validate.error.details[0].message })
+      return res.json({msg:validate.error.details[0].message })
   }
   const newUser = await User.create(req.body)
   res.json({msg:'Signing up was successful',data:newUser})
