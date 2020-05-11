@@ -8,13 +8,13 @@ const User = require('../../models/User')
 const postMessage = async(req,res)=>{
     try{
         if(req.body.username=== undefined)
-        res.json({msg:'you are not signed in to post a message, please sign in/sign up'})
+        return res.json({msg:'you are not signed in to post a message, please sign in/sign up'})
         const user = await User.find({userName:req.body.username}) // check to see if i'm signed in before posting a message
         if(user.length===0){
-            res.json({msg:'username does not exist'})
+           return res.json({msg:'username does not exist'})
         }
         const newMessage = await Message.create(req.body)
-        res.json({msg:'Message posted successfully!!',data:newMessage})    
+       return res.json({msg:'Message posted successfully!!',data:newMessage})    
 
 
 
@@ -34,11 +34,13 @@ const editMessage = async(req,res)=>{
         if(!message)
        return res.json({msg:'this message does not exist'})
        else{
+           if(req.body.username===undefined)
+           return res.json({msg:'you are not signed in to post a message, please sign in/sign up'})
            const user = req.body.username // get username of signed in user to access editing of message
-           if(message.usename!==user)
+           if(message.username!==user)
            return res.json({msg:'you can only edit your own message'})
            else{
-               const updatedMessage = await Message.findOneAndUpdate(req.params.id,req.body)
+               const updatedMessage = await Message.findByIdAndUpdate(req.params.id,req.body)
                return res.json({msg:'Message updated successfully',data:updatedMessage})
            }
 
