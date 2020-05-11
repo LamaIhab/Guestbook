@@ -4,7 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "node server.js"
+    "start": "node server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client-install": "npm install --prefix client",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client"
   },
   "repository": {
     "type": "git",
@@ -18,9 +22,13 @@
   },
   "homepage": "https://github.com/LamaIhab/Guestbook#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "mongoose": "^5.9.13",
     "react": "^16.13.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0"
   }
 }
