@@ -7,9 +7,12 @@ const User = require('../../models/User')
 
 const postMessage = async(req,res)=>{
     try{
+        if(req.body.username=== undefined)
+        res.json({msg:'you are not signed in to post a message, please sign in/sign up'})
         const user = await User.find({userName:req.body.username}) // check to see if i'm signed in before posting a message
         if(user.length===0){
-            res.json({msg:'you are not signed in to post a message, please sign in/sign up'})}
+            res.json({msg:'username does not exist'})
+        }
         const newMessage = await Message.create(req.body)
         res.json({msg:'Message posted successfully!!',data:newMessage})    
 
