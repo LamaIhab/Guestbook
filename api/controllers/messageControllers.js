@@ -53,10 +53,17 @@ const editMessage = async(req,res)=>{
 }
 
 // get all messages
-
+const getAllMessages = async(req,res)=>{
+    const messages = await Message.find() // will be used to show all messages on the website
+    if(messages.length===0)
+    return res.json({msg:'no messages posted yet'})
+    else
+    return res.json({data:messages})
+}
 
 // delete a message
 module.exports={
     postMessage,
-    editMessage
+    editMessage,
+    getAllMessages
 }

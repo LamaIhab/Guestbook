@@ -5,4 +5,5 @@ const router = express.Router()
 
 router.post('/postMessage',messages.postMessage)
 router.put('/editMessage/:id',messages.editMessage)
+router.get('/getMessages',messages.getAllMessages)
 module.exports = router
