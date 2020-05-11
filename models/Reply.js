@@ -22,4 +22,4 @@ const replySchema = new Schema({
     }
   
 })
-module.exports = Reply = mongoose.model(replies,replySchema)
+module.exports = Reply = mongoose.model('replies',replySchema)
