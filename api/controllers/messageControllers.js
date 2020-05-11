@@ -69,13 +69,16 @@ const getAllMessages = async(req,res)=>{
 // delete a message
 const deleteMessage = async(req,res)=>{
     try{
-    if(req.body.params===undefined)
+    if(req.body.username===undefined)
     return res.json({msg:'you are not signed in to delete a message'})
-    const user = req.body.user
+    const user = req.body.username
     const message = await Message.findById(req.params.id)
     if(!message){
         return res.json({msg:'this message does not exist'})
     }
+    console.log(message.username)
+    console.log(user)
+
     if(message.username!==user)
     return res.json({msg:'you can only delete your own message'})
     const deletedMessage = await Message.findByIdAndRemove(req.params.id)
@@ -89,5 +92,6 @@ catch(error){
 module.exports={
     postMessage,
     editMessage,
-    getAllMessages
+    getAllMessages,
+    deleteMessage
 }
