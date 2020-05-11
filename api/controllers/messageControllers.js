@@ -22,3 +22,6 @@ const postMessage = async(req,res)=>{
     }
 
 }
+module.exports={
+    postMessage
+}

@@ -1,6 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose') // for mongodb as database
 const users = require('./api/routes/users.route') // to use the users routes and functionality
+const messages = require('./api/routes/messages.route') // to use the messages routes and functionality
 const cors = require('cors')
 // connecting to database
 const db = require('./config/key_dev').mongoURI
@@ -19,5 +20,6 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/',users)
+app.use('/',messages)
 const port = process.env.PORT || 5000
 app.listen(port,()=>console.log(`Server on ${port}` ))
