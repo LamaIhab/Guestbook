@@ -52,5 +52,6 @@ const editMessage = async(req,res)=>{
 
 // delete a message
 module.exports={
-    postMessage
+    postMessage,
+    editMessage
 }
