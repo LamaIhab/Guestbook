@@ -19,11 +19,14 @@ const signUp = async(req,res) =>{
       return res.json({msg:validate.error.details[0].message })
   }
   const newUser = await User.create(req.body)
+  
+  
   res.json({msg:'Signing up was successful',data:newUser})
   
     }
-    catch(error){
-        console.error(error)
+    catch(error){ // mongo error due to duplicate key as username is unique
+        res.json({msg:'this username already exists'})
+        
     }
 
 }

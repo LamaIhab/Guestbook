@@ -20,8 +20,12 @@ export default class SignUpForm extends React.Component{
        else if(this.state.password==='')
         alert('password cannot be empty')
         axios.post('http://localhost:5000/signUp',{userName:this.state.userName,displayName:this.state.displayName,password:this.state.password}).then(res=>{
+           if(res.data.msg==='Signing up was successful'){
+               // go to another page will handle later
+           }
+           else
            alert(res.data.msg)
-        }).catch(err=>{console.log(err)})
+        }).catch(err=>{alert(err.data.msg)})
     }
     render(){
         return(
