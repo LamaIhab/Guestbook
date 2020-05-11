@@ -8,7 +8,7 @@ const postReply = async(req,res)=>{
     try{
         if(req.body.username===undefined) // not signed in
         return res.json({msg:'please sign in/sign up to reply to a message'})
-        const message = Message.findById(req.params.id)
+        const message = await Message.findById(req.params.id)
         if(!message)
         return res.json({msg:'message does not exist'})
         const reply = await Reply.create(req.body,{messageID:req.params.id})
