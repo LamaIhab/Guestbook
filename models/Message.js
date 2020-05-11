@@ -14,7 +14,6 @@ const messageSchema = new Schema({
       },
       time:{
           type:Date,
-          required:true,
           default:Date.now() // when message is created
 
       }
