@@ -7,7 +7,8 @@ export default class MessagesRow extends React.Component {
     description: this.props.message.description,
     time: this.props.message.time,
     id: this.props.message._id,
-    replies: [] // render those under message handle later
+    replies: [], // render those under message handle later
+    messages: this.props.messages
     //signedinCorrect:false to hide buttons will handle later
   };
 
@@ -64,7 +65,22 @@ export default class MessagesRow extends React.Component {
         });
     }
   };
-  deleteMsg = () => {};
+  deleteMsg = () => {
+    // will get username from signed in later
+    axios
+      .post(`http://localhost:5000/deleteMessage/${this.state.id}`, {
+        username: "lama.ihab"
+      })
+      .then(res => {
+        console.log(this.state.username);
+        if (res.data.msg === "Message deleted successfully") {
+          this.setState(
+            this.state.messages.filter(message => message._id == this.state.id)
+          );
+        }
+        alert(res.data.msg);
+      });
+  };
   render() {
     //console.log(this.props.message.username+'hiiiii')
     return (

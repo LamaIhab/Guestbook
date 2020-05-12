@@ -18,7 +18,7 @@ export default class AllMessages extends React.Component {
     return (
       <div>
         {this.state.messages.map(message => (
-          <MessagesRow key={message._id} message={message} />
+          <MessagesRow key={message._id} message={message} messages={this.state.messages} />
         ))}
       </div>
     );
