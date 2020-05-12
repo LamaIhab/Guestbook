@@ -16,6 +16,8 @@ export default class Header extends React.Component{
            
            
             <Link onClick={this.props.logIn}>Login</Link>
+            <Link onClick={this.props.signUp}>Sign Up</Link>
+            <Link to="/">Home</Link>
             
             </header> 
            
