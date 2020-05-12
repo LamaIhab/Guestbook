@@ -12,6 +12,12 @@ export default class MessagesRow extends React.Component {
     //signedinCorrect:false to hide buttons will handle later
   };
 
+  componentDidMount(){
+      axios.get(`http://localhost:5000/getReplies/${this.state.id}`).then(res=>{
+          this.setState({replies:res.data.data})
+      })
+  }
+
   editMsg = () => {
     const edit = prompt("edit your message:", this.state.description); // will get username from signed in later
     if (edit === "" || edit === null) {

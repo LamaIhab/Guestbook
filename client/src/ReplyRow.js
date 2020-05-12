@@ -16,7 +16,7 @@ export default class ReplyRow extends React.Component{
             <div style={{color:'#000000'}}>
             Replies:
              {this.state.username}:{this.state.description}
-        {this.state.data}
+        {this.state.date}
         <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
 
             </div>
