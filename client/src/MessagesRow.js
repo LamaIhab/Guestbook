@@ -69,6 +69,7 @@ export default class MessagesRow extends React.Component {
     //console.log(this.props.message.username+'hiiiii')
     return (
       <div style={itemStyle}>
+      <li>
         {this.state.username}:{this.state.description}
         {this.state.time}
         <br/>
@@ -80,6 +81,7 @@ export default class MessagesRow extends React.Component {
         <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
         Replies:
       {this.state.replies.map(reply=><ReplyRow reply={reply}/>)}
+      </li>
       </div>
 
      
