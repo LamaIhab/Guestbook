@@ -1,13 +1,24 @@
 import React from 'react'
-import {Link} from 'react-router-dom';
+import {Link,BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
+import LogInForm from './LogInForm'
+import SignUpForm from './SignUpForm'
+
 
 export default class Header extends React.Component{
+   
     render(){
+        
+                  
+    
+   
         return(
+            <header style = {headerStyle}>
            
-            <header style={headerStyle}>
+           
+            <Link onClick={this.props.logIn}>Login</Link>
             
             </header> 
+           
             
            
            
@@ -26,5 +37,5 @@ const headerStyle={
     color:'#e5e8e8',
     textAlign:'center',
     padding:'10px',
-    height:100
+    height:50
   }

@@ -3,6 +3,7 @@ import {Link,BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
 
 import Header from './Header'
 import MessagesPage from './MessagesPage'
+import LogInPage from './LogInPage'
 class App extends React.Component {
   state={
     redirect:null
@@ -10,6 +11,10 @@ class App extends React.Component {
   gotoMsgs=()=>{
     this.setState({redirect:'/messages'})
   }
+  logIn=()=>{
+    this.setState({redirect:'/login'})
+
+}
 
  
   render() {
@@ -18,6 +23,7 @@ class App extends React.Component {
       return (
         <Router>
       <Route exact path = "/messages" component = {MessagesPage}/> 
+      <Route exact path = "/login" component = {LogInPage}/> 
     
       <Redirect to={this.state.redirect}/>
       </Router>
@@ -28,7 +34,7 @@ class App extends React.Component {
     <Router>
       
       <div >
-        <Header />
+        <Header logIn = {this.logIn}/>
         <p style = {message}>Welcome to Guest Book</p>
         <Link onClick={this.gotoMsgs}>get started and see what our guests are saying</Link>
        
