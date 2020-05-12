@@ -7,6 +7,7 @@ export default class MessagesRow extends React.Component{
         description:this.props.message.description,
         time:this.props.message.time,
         id:this.props.message._id,
+        replies:[] // render those under message handle later
         //signedinCorrect:false to hide buttons will handle later
     }
    
@@ -24,14 +25,24 @@ export default class MessagesRow extends React.Component{
 
     }
     replyMsg=()=>{
-        prompt('please enter the reply')
+       const reply= prompt('please enter the reply:') // will get username from signed in later
+       axios.post(`http://localhost:5000/postReply/${this.state.id}`,{username:'lama.ihab',description:reply}).then(res=>{
+        if(res.data.msg==='reply was posted successfully'){
+            
+        
+        this.setState({replies:[...this.state.replies,{_id:res.data.data._id,username:res.data.data.username,date:res.data.data.date,description:res.data.data.description,messageID:res.data.data.messageID}]})
+        console.log(this.state.replies)
+        }
+        alert(res.data.msg)
+
+       }).catch(error=>{console.log(error)})
 
     }
     deleteMsg=()=>{
 
     }
     render(){
-        console.log(this.props.message.username+'hiiiii')
+        //console.log(this.props.message.username+'hiiiii')
         return(
             <div style ={itemStyle}>
            
