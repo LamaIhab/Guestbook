@@ -6,12 +6,25 @@ export default class MessagesRow extends React.Component{
         username:this.props.message.username,
         description:this.props.message.description,
         time:this.props.message.time,
-        id:this.props.message._id
+        id:this.props.message._id,
+        //signedinCorrect:false to hide buttons will handle later
     }
+   
     editMsg=()=>{
+        
+        const edit = prompt('edit your message:',this.state.description) // will get username from signed in later
+        axios.put(`http://localhost:5000/editMessage/${this.state.id}`,{username:'lama.ihab',description:edit}).then(res=>{
+            if(res.data.msg==='Message updated successfully')
+            this.setState({description:edit})
+            alert(res.data.msg)
+            
+        }).catch(error=>{console.log(error)})
+
+      
 
     }
     replyMsg=()=>{
+        prompt('please enter the reply')
 
     }
     deleteMsg=()=>{
@@ -28,7 +41,8 @@ export default class MessagesRow extends React.Component{
                 
                 <button  onClick={this.editMsg}>Edit</button>
                 <button  onClick = {this.replyMsg}>Reply</button>
-                <button  onClick = {this.deleteMsg} >Delete</button>
+                <button onClick = {this.deleteMsg} >Delete</button>
+                
 
             </div>
 

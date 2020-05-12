@@ -8,7 +8,7 @@ export default class AllMessages extends React.Component{
     }
     componentDidMount(){
         axios.get('http://localhost:5000/getMessages').then(res=>{
-            this.setState({messages:res.data.data})
+            this.setState({messages:res.data.data}) // check update state to render automatically
         })
 
 
