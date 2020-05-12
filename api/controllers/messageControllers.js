@@ -69,7 +69,6 @@ const getAllMessages = async(req,res)=>{
 // delete a message
 const deleteMessage = async(req,res)=>{
     try{
-        console.log(req.body.username+'hoooo')
     if(req.body.username===undefined)
     return res.json({msg:'you are not signed in to delete a message'})
     const user = req.body.username
