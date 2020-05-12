@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import ReplyRow from './ReplyRow'
 
 export default class MessagesRow extends React.Component {
   state = {
@@ -7,7 +8,7 @@ export default class MessagesRow extends React.Component {
     description: this.props.message.description,
     time: this.props.message.time,
     id: this.props.message._id,
-    replies: [], // render those under message handle later
+    replies: [] // render those under message handle later
     //signedinCorrect:false to hide buttons will handle later
   };
 
@@ -64,7 +65,6 @@ export default class MessagesRow extends React.Component {
         });
     }
   };
-  
 
   render() {
     //console.log(this.props.message.username+'hiiiii')
@@ -72,10 +72,21 @@ export default class MessagesRow extends React.Component {
       <div style={itemStyle}>
         {this.state.username}:{this.state.description}
         {this.state.time}
+        <br/>
         <button onClick={this.editMsg}>Edit</button>
         <button onClick={this.replyMsg}>Reply</button>
-        <button onClick={this.props.deleteMsg.bind(this,this.state.id)}>Delete</button>
+        <button onClick={this.props.deleteMsg.bind(this, this.state.id)}>
+          Delete
+        </button>
+        <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
+      <ReplyRow />
       </div>
+
+     
+    
+      
+      
+       
     );
   }
 }
