@@ -22,6 +22,21 @@ const postReply = async(req,res)=>{
     }
 }
 
+// get reply of specific message
+const getReplies = async(req,res)=>{
+    try{
+        const message = await Message.findById(req.params.id)
+        if(!message)
+        return res.json({msg:'message does not exist or deleted'})
+        const replies = await Reply.find({messageID:req.params.id})
+        return res.json({data:replies})
+    }
+    catch(error){
+        console.error(error)
+    }
+}
+
 module.exports={
-    postReply
+    postReply,
+    getReplies
 }

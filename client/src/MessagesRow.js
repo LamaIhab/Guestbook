@@ -46,15 +46,8 @@ export default class MessagesRow extends React.Component {
           if (res.data.msg === "reply was posted successfully") {
             this.setState({
               replies: [
-                ...this.state.replies,
-                {
-                  _id: res.data.data._id,
-                  username: res.data.data.username,
-                  date: res.data.data.date,
-                  description: res.data.data.description,
-                  messageID: res.data.data.messageID
-                }
-              ]
+                ...this.state.replies,res.data.data]
+              
             });
             //console.log(this.state.replies)
           }
@@ -79,7 +72,8 @@ export default class MessagesRow extends React.Component {
           Delete
         </button>
         <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
-      <ReplyRow />
+        Replies:
+      {this.state.replies.map(reply=><ReplyRow reply={reply}/>)}
       </div>
 
      
