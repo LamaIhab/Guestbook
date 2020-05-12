@@ -27,13 +27,31 @@ export default class AllMessages extends React.Component {
           alert(res.data.msg)
       }).catch(error=>{console.log(error)})
   }
+  
+  
+  deleteMsg = (id) => {
+    // will get username from signed in later
+    axios
+      .post(`http://localhost:5000/deleteMessage/${id}`, {
+        username: "lama.ihab"
+      })
+      .then(res => {
+        //console.log(this.state.username);
+        if (res.data.msg === "Message deleted successfully") {
+         
+           this.setState({messages:[...this.state.messages.filter(message=>(message._id!==id))]})
+        }
+        alert(res.data.msg);
+      });
+  };
+
   render() {
     //console.log(this.state.messages)
     return (
       <div>
           <button onClick={this.postMsg} >Post a new Message</button>
           {this.state.messages.map(message => (
-          <MessagesRow key={message._id} message={message} messages={this.state.messages} />
+          <MessagesRow key={message._id} message={message} deleteMsg={this.deleteMsg}  />
         ))}
       
       </div>
