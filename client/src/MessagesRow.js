@@ -25,7 +25,7 @@ export default class MessagesRow extends React.Component {
     } else {
       axios
         .put(`http://localhost:5000/editMessage/${this.state.id}`, {
-          username: "lama.ihab",
+          username: this.props.username,
           description: edit
         })
         .then(res => {
@@ -45,7 +45,7 @@ export default class MessagesRow extends React.Component {
     } else {
       axios
         .post(`http://localhost:5000/postReply/${this.state.id}`, {
-          username: "lama.ihab",
+          username: this.props.username,
           description: reply
         })
         .then(res => {

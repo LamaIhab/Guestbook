@@ -37,7 +37,7 @@ export default class LogInForm extends React.Component {
   render() {
     if(this.state.loggedin){
       return (
-      <MessagesPage />
+      <MessagesPage username={this.state.username}/>
       )
     }
    

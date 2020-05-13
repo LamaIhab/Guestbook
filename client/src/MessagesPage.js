@@ -7,7 +7,7 @@ export default class MessagesPage extends React.Component{
         return(
             <div>
            
-            <AllMessages />
+            <AllMessages username={this.props.username}/>
             </div>
             
         )
