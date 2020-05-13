@@ -24,9 +24,9 @@ export default class ReplyRow extends React.Component{
            
             <ul>
          
-             @{this.state.username}:<br/>{this.state.description}<br/>
+            <p style={nameStyle}> @{this.state.username}:</p><p style={msgStyle}>{this.state.description}</p>
              <p style={dateStyle}>{this.getDate()}</p>
-        <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
+        <hr style={lineStyle} />
       
         </ul>
 
@@ -39,4 +39,34 @@ const dateStyle={
     fontSize:15,
    
     fontFamily:'Ariel',
+    color:'	#191970	',
+  }
+  const lineStyle = {
+    height: 0.7,
+    color: "FF4500",
+    backgroundColor: "#E6E6FA"
+  }
+ 
+  const nameStyle = {
+    
+    fontFamily:'Ariel',
+    fontStyle:'Italic',
+    color:'#BA55D3',
+  
+  
+   
+    fontSize:17,
+    fontWeight:'bold'
+  }
+
+  const msgStyle = {
+    
+    fontFamily:'Ariel',
+  
+    color:'#',
+  
+  
+   
+    fontSize:18,
+   
   }

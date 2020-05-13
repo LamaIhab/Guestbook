@@ -84,7 +84,7 @@ const message = {
   textAlign:'center',
   //fontFamily:'Ariel',
  fontStyle:'Italic',
-color:'#DDA0DD',
+color:'#87CEFA',
 
   padding:'1px',
   
