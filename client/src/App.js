@@ -29,6 +29,7 @@ home=()=>{
 
  
   render() {
+    console.log(this.state.redirect)
     
     if(this.state.redirect){
       return (
@@ -49,9 +50,10 @@ home=()=>{
        
       
       <div >
+  
         <Header logIn = {this.logIn} signUp = {this.signUp} home={this.home}/>
         <p style = {message}>Welcome to Guest Book</p>
-        <Link style={getStarted} onClick={this.gotoMsgs}>EXPLORE NOW!!</Link>
+        <Link style={getStarted} onClick={this.gotoMsgs}>CLICK HERE & EXPLORE NOW!!</Link>
        
    
         
@@ -78,9 +80,8 @@ const getStarted = {
   fontStyle:'Italic',
   color:'#87CEEB',
 
-  padding:'530px',
-  flex:20,
-  flexDirection:'coloumn',
+  padding:'470px',
+
   
   fontSize:30,
   fontWeight:'bold'

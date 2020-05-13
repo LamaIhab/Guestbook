@@ -44,25 +44,50 @@ export default class LogInForm extends React.Component {
     return (
       <form onSubmit={this.logIn}>
         <label>
-          <input
+          <p style={inputStyle}><input 
             name="userName"
             type="text"
             placeholder="username"
             value={this.state.userName}
             onChange={this.onChange}
-          />
+          /></p>
         </label>
         <label>
-          <input
+          <br />
+          
+          <p style={inputStyle}><input
             name="password"
             type="text"
             placeholder="password"
             value={this.state.password}
             onChange={this.onChange}
-          />
+          /></p>
         </label>
-        <input type="submit" value="submit" />
+     
+    
+        <p style={inputStyle}><input style={btnStyle} type="submit" value="Login" /></p>
       </form>
     );
   }
 }
+
+const inputStyle = {
+  textAlign:'center',
+  fontFamily:'Ariel',
+  fontStyle:'Italic',
+  color:'#87CEFA',
+
+  padding:'1px',
+ 
+  
+  //fontSize:30,
+  fontWeight:'bold'
+  //fontWeight:'bold'
+}
+
+const btnStyle={
+  background:'#A9A9A9',
+  color:'#',
+  //:'10px'
+  
+  }

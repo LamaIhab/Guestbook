@@ -5,9 +5,7 @@ import SignUpForm from './SignUpForm'
 
 
 export default class Header extends React.Component{
-    state = {
-    
-    }
+ 
    
     render(){
         
@@ -18,9 +16,9 @@ export default class Header extends React.Component{
             <header style = {headerStyle}>
            
            
-            <Link style={LinkStyle} to='/login'onClick={this.props.logIn}>Login</Link>|{" "}
-            <Link style={LinkStyle} to='/signUp' onClick={this.props.signUp}>SignUp</Link>|{" "}
-            <Link style={LinkStyle} onClick={this.props.home}>Home</Link>
+            <Link style={LinkStyle}  onClick={this.props.logIn}>Login</Link>|{" "}
+            <Link style={LinkStyle}  onClick={this.props.signUp}>SignUp</Link>|{" "}
+            <Link style={LinkStyle}  onClick={this.props.home}>Home</Link>
             
             </header> 
            
