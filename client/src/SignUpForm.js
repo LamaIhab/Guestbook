@@ -47,36 +47,64 @@ export default class SignUpForm extends React.Component {
     else return (
       <div>
         <form onSubmit={this.signUp}>
-          <label>Full Name</label>
-          <input
+         
+          <br />
+          <p style={inputStyle}>Full Name: <br/><input
             name="displayName"
             type="text"
             placeholder="fullname"
             value={this.state.displayName}
             onChange={this.onChange}
-          />
+         /></p>
           <br></br>
-          <label>username</label>
-          <input
+       
+          <br />
+          <p style={inputStyle}>User Name: <br/><input
             name="userName"
             type="text"
             placeholder="username"
             value={this.state.userName}
             onChange={this.onChange}
-          />
+          /></p>
 
           <br></br>
-          <label>Password</label>
-          <input
+          
+          <br />
+          <p style={inputStyle}>Password: <br/><input
             name="password"
             type="text"
             placeholder="password"
             value={this.state.password}
             onChange={this.onChange}
-          />
-          <input type="submit" value="Sign Up" />
+          /></p>
+           <br />
+           <p style={inputStyle}><input style={btnStyle} type="submit" value="Sign Up" /></p>
         </form>
       </div>
     );
   }
 }
+
+
+const inputStyle = {
+  textAlign:'center',
+  //fontFamily:'Ariel',
+ // fontStyle:'Italic',
+
+
+  padding:'1px',
+  
+ 
+  
+  //fontSize:30,
+  fontWeight:'bold'
+  //fontWeight:'bold'
+}
+
+const btnStyle={
+  background:'#A9A9A9',
+  color:'#',
+  //:'10px'
+  
+  }
+
