@@ -30,7 +30,7 @@ const editMessage = async (req, res) => {
     else {
       if (req.body.username === undefined)
         return res.json({
-          msg: "you are not signed in to post a message, please sign in/sign up"
+          msg: "you are not signed in to edit a message, please sign in/sign up"
         });
       const user = req.body.username; // get username of signed in user to access editing of message
       if (message.username !== user)

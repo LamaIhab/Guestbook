@@ -17,9 +17,12 @@ export default class AllMessages extends React.Component {
   postMsg = () => {
     // get username first and check if it's null not signed in will handle later
     const msg = prompt("type your message:");
+    const user = this.props.username? this.props.username: this.props.usernameSU
+    console.log(user+'hhhhh')
+
     axios
       .post(`http://localhost:5000/postMessage`, {
-        username: this.props.username,
+        username: user,
         description: msg
       })
       .then(res => {
@@ -34,10 +37,12 @@ export default class AllMessages extends React.Component {
   };
 
   deleteMsg = id => {
-    // will get username from signed in later
+  
+    const user = this.props.username? this.props.username: this.props.usernameSU
+    console.log(user+'hhhhh')
     axios
       .post(`http://localhost:5000/deleteMessage/${id}`, {
-        username: this.props.username
+        username: user
       })
       .then(res => {
         //console.log(this.state.username);
@@ -61,7 +66,7 @@ export default class AllMessages extends React.Component {
           <MessagesRow
             key={message._id}
             message={message}
-            deleteMsg={this.deleteMsg} username={this.props.username}
+            deleteMsg={this.deleteMsg} username={this.props.username} usernameSU = {this.props.usernameSU}
           />
         ))}
       </div>

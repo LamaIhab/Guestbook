@@ -19,13 +19,16 @@ export default class MessagesRow extends React.Component {
   }
 
   editMsg = () => {
+   
     const edit = prompt("edit your message:", this.state.description); // will get username from signed in later
     if (edit === "" || edit === null) {
       alert("Message cannot be empty");
     } else {
+      const user = this.props.username? this.props.username: this.props.usernameSU
+    console.log(user+'hhhhh')
       axios
         .put(`http://localhost:5000/editMessage/${this.state.id}`, {
-          username: this.props.username,
+          username: user,
           description: edit
         })
         .then(res => {
@@ -43,9 +46,11 @@ export default class MessagesRow extends React.Component {
     if (reply === "" || reply === null) {
       alert("Reply cannot be empty");
     } else {
+      const user = this.props.username? this.props.username: this.props.usernameSU
+    console.log(user+'hhhhh')
       axios
         .post(`http://localhost:5000/postReply/${this.state.id}`, {
-          username: this.props.username,
+          username: user,
           description: reply
         })
         .then(res => {

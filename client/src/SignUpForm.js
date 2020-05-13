@@ -39,7 +39,7 @@ export default class SignUpForm extends React.Component {
   render() {
     if(this.state.signup){
       return(
-        <MessagesPage />
+        <MessagesPage usernameSU={this.state.userName} />
 
       )
     }
