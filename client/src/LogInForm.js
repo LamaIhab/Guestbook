@@ -1,9 +1,12 @@
 import React from "react";
 import axios from "axios"; // to call backend
+import {Link,BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
+import MessagesPage from './MessagesPage'
 export default class LogInForm extends React.Component {
   state = {
     userName: "",
-    password: ""
+    password: "",
+    loggedin:null
   };
 
   onChange = e => {
@@ -22,7 +25,7 @@ export default class LogInForm extends React.Component {
       })
       .then(res => {
         if (res.data.msg === "signing in successfull!!") {
-          // re direct to another page will handle later
+         this.setState({loggedin:true})
         } else {
           alert(res.data.msg);
         }
@@ -32,6 +35,12 @@ export default class LogInForm extends React.Component {
       });
   };
   render() {
+    if(this.state.loggedin){
+      return (
+      <MessagesPage />
+      )
+    }
+   
     return (
       <form onSubmit={this.logIn}>
         <label>

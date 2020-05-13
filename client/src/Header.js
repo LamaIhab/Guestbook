@@ -15,9 +15,9 @@ export default class Header extends React.Component{
             <header style = {headerStyle}>
            
            
-            <Link onClick={this.props.logIn}>Login</Link>
-            <Link onClick={this.props.signUp}>Sign Up</Link>
-            <Link to="/">Home</Link>
+            <Link to='/login'onClick={this.props.logIn}>Login</Link>
+            <Link to='signUp' onClick={this.props.signUp}>Sign Up</Link>
+            <Link onClick={this.props.home}>Home</Link>
             
             </header> 
            

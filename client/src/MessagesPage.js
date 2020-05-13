@@ -6,7 +6,7 @@ export default class MessagesPage extends React.Component{
     render(){
         return(
             <div>
-           <Header></Header>
+           
             <AllMessages />
             </div>
             

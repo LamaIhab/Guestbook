@@ -20,6 +20,10 @@ signUp=()=>{
   this.setState({redirect:'/signUp'})
 
 }
+home=()=>{
+  this.setState({redirect:null})
+
+}
 
 
 
@@ -29,6 +33,7 @@ signUp=()=>{
     if(this.state.redirect){
       return (
         <Router>
+          <Header logIn = {this.logIn} signUp = {this.signUp} home={this.home}/>
       <Route exact path = "/messages" component = {MessagesPage}/> 
       <Route exact path = "/login" component = {LogInPage}/> 
       <Route exact path = "/signUp" component = {SignUpPage}/> 
@@ -38,12 +43,13 @@ signUp=()=>{
       )
     }
    
-   else return(
+   return(
     <Router>
+      
        
       
       <div >
-        <Header logIn = {this.logIn} signUp = {this.signUp}/>
+        <Header logIn = {this.logIn} signUp = {this.signUp} home={this.home}/>
         <p style = {message}>Welcome to Guest Book</p>
         <Link onClick={this.gotoMsgs}>get started and see what our guests are saying</Link>
        
