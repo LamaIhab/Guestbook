@@ -64,8 +64,9 @@ export default class AllMessages extends React.Component {
     //console.log(this.state.messages)
     return (
       <div>
-        <button onClick={this.postMsg}>Post a new Message</button>
-        <ul>
+        <p style={message}>Join the Conversations</p>
+        <p style={message}><button style={btnStyle}onClick={this.postMsg}>Post a new Message</button></p>
+        
         {this.state.messages.map(message => (
           <MessagesRow
             key={message._id}
@@ -73,8 +74,29 @@ export default class AllMessages extends React.Component {
             deleteMsg={this.deleteMsg} username={this.props.username} usernameSU = {this.props.usernameSU}
           />
         ))}
-        </ul>
+        
       </div>
     );
   }
 }
+
+const message = {
+  textAlign:'center',
+  //fontFamily:'Ariel',
+ fontStyle:'Italic',
+color:'#DDA0DD',
+
+  padding:'1px',
+  
+ 
+  
+  fontSize:35,
+  fontWeight:'bold'
+  //fontWeight:'bold'
+}
+const btnStyle={
+  background:'#A9A9A9',
+  color:'#',
+  //:'10px'
+  
+  }

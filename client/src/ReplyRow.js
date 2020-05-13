@@ -10,6 +10,11 @@ export default class ReplyRow extends React.Component{
     
 
     }
+    getDate=()=>{
+        const arr = this.state.date.split('')
+        console.log(arr+'hhh')
+        return 'll'
+    }
     render(){
         return(
             
@@ -17,9 +22,10 @@ export default class ReplyRow extends React.Component{
            
             <ul>
          
-             {this.state.username}:{this.state.description}
-                                   {this.state.date}
+             @{this.state.username}:<br/>{this.state.description}<br/>
+             <p style={dateStyle}>{this.getDate()}</p>
         <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
+      
         </ul>
 
             </div>
@@ -27,3 +33,8 @@ export default class ReplyRow extends React.Component{
         )
     }
 }
+const dateStyle={
+    fontSize:15,
+   
+    fontFamily:'Ariel',
+  }

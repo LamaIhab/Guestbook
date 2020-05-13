@@ -88,9 +88,9 @@ export default class MessagesRow extends React.Component {
       // checking if not signed in or signed up as this message's user remove buttons
       return (
         <div style={itemStyle}>
-          <li>
-            {this.state.username}:{this.state.description}
-            {this.state.time}
+          @
+            {this.state.username}:<br/>{this.state.description}<br/>
+           <p style={dateStyle}>{this.state.time}</p>
             <br />
             <button onClick={this.replyMsg}>Reply</button>
             <hr
@@ -100,21 +100,28 @@ export default class MessagesRow extends React.Component {
                 backgroundColor: "#E6E6FA"
               }}
             />
-            <li>
-              Replies:
+            
+              Replies:({this.state.replies.length})
+              <hr
+              style={{
+                height: 0.7,
+                color: "#DDA0DD",
+                backgroundColor: "##DDA0DD"
+              }}
+            />
               {this.state.replies.map(reply => (
                 <ReplyRow reply={reply} />
               ))}
-            </li>
-          </li>
+           
         </div>
       );
     } else
       return (
         <div style={itemStyle}>
-          <li>
-            {this.state.username}:{this.state.description}
-            {this.state.time}
+         @
+            {this.state.username}:<br/>{this.state.description}
+            <br />
+           <p style={dateStyle}>{this.state.time}</p>
             <br />
             <button onClick={this.editMsg}>Edit</button>
             <button onClick={this.replyMsg}>Reply</button>
@@ -128,17 +135,29 @@ export default class MessagesRow extends React.Component {
                 backgroundColor: "#E6E6FA"
               }}
             />
-            <li>
-              Replies:
+            
+              Replies:({this.state.replies.length})
+            
               {this.state.replies.map(reply => (
                 <ReplyRow reply={reply} />
               ))}
-            </li>
-          </li>
+              <hr
+              style={{
+                height: 0.7,
+                color: "FF4500",
+                backgroundColor: "#E6E6FA"
+              }}
+            />
+         
         </div>
       );
   }
 }
 const itemStyle = {
-  backgroundColor: "#E6E6FA"
+  backgroundColor: "#D3D3D3"
 };
+const dateStyle={
+  fontSize:15,
+ 
+  fontFamily:'Ariel',
+}
