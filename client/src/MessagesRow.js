@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import ReplyRow from './ReplyRow'
+import ReplyRow from "./ReplyRow";
 
 export default class MessagesRow extends React.Component {
   state = {
@@ -8,24 +8,26 @@ export default class MessagesRow extends React.Component {
     description: this.props.message.description,
     time: this.props.message.time,
     id: this.props.message._id,
-    replies: [] // render those under message handle later
-    //signedinCorrect:false to hide buttons will handle later
+    replies: [], // render those under message handle later
+    signedin: this.props.username,
+    signedup: this.props.usernameSU
   };
 
-  componentDidMount(){
-      axios.get(`http://localhost:5000/getReplies/${this.state.id}`).then(res=>{
-          this.setState({replies:res.data.data})
-      })
+  componentDidMount() {
+    axios.get(`http://localhost:5000/getReplies/${this.state.id}`).then(res => {
+      this.setState({ replies: res.data.data });
+    });
   }
 
   editMsg = () => {
-   
     const edit = prompt("edit your message:", this.state.description); // will get username from signed in later
     if (edit === "" || edit === null) {
       alert("Message cannot be empty");
     } else {
-      const user = this.props.username? this.props.username: this.props.usernameSU
-    console.log(user+'hhhhh')
+      const user = this.props.username
+        ? this.props.username
+        : this.props.usernameSU;
+      console.log(user + "hhhhh");
       axios
         .put(`http://localhost:5000/editMessage/${this.state.id}`, {
           username: user,
@@ -46,8 +48,10 @@ export default class MessagesRow extends React.Component {
     if (reply === "" || reply === null) {
       alert("Reply cannot be empty");
     } else {
-      const user = this.props.username? this.props.username: this.props.usernameSU
-    console.log(user+'hhhhh')
+      const user = this.props.username
+        ? this.props.username
+        : this.props.usernameSU;
+      console.log(user + "hhhhh");
       axios
         .post(`http://localhost:5000/postReply/${this.state.id}`, {
           username: user,
@@ -56,9 +60,7 @@ export default class MessagesRow extends React.Component {
         .then(res => {
           if (res.data.msg === "reply was posted successfully") {
             this.setState({
-              replies: [
-                ...this.state.replies,res.data.data]
-              
+              replies: [...this.state.replies, res.data.data]
             });
             //console.log(this.state.replies)
           }
@@ -71,30 +73,63 @@ export default class MessagesRow extends React.Component {
   };
 
   render() {
-    //console.log(this.props.message.username+'hiiiii')
-    return (
-      <div style={itemStyle}>
-      <li>
-        {this.state.username}:{this.state.description}
-        {this.state.time}
-        <br/>
-        <button onClick={this.editMsg}>Edit</button>
-        <button onClick={this.replyMsg}>Reply</button>
-        <button onClick={this.props.deleteMsg.bind(this, this.state.id)}>
-          Delete
-        </button>
-        <hr style={{height: 0.7,color:'FF4500',backgroundColor:'#E6E6FA'}} />
-        Replies:
-      {this.state.replies.map(reply=><ReplyRow reply={reply}/>)}
-      </li>
-      </div>
-
-     
-    
-      
-      
-       
-    );
+    if (
+      (!this.state.signedin && !this.props.signedup) ||
+      (this.state.signedin !== this.state.username &&
+        this.state.signedup !== this.state.username)
+    ) {
+      // checking if not signed in or signed up as this message's user remove buttons
+      return (
+        <div style={itemStyle}>
+          <li>
+            {this.state.username}:{this.state.description}
+            {this.state.time}
+            <br />
+            <button onClick={this.replyMsg}>Reply</button>
+            <hr
+              style={{
+                height: 0.7,
+                color: "FF4500",
+                backgroundColor: "#E6E6FA"
+              }}
+            />
+            <li>
+              Replies:
+              {this.state.replies.map(reply => (
+                <ReplyRow reply={reply} />
+              ))}
+            </li>
+          </li>
+        </div>
+      );
+    } else
+      return (
+        <div style={itemStyle}>
+          <li>
+            {this.state.username}:{this.state.description}
+            {this.state.time}
+            <br />
+            <button onClick={this.editMsg}>Edit</button>
+            <button onClick={this.replyMsg}>Reply</button>
+            <button onClick={this.props.deleteMsg.bind(this, this.state.id)}>
+              Delete
+            </button>
+            <hr
+              style={{
+                height: 0.7,
+                color: "FF4500",
+                backgroundColor: "#E6E6FA"
+              }}
+            />
+            <li>
+              Replies:
+              {this.state.replies.map(reply => (
+                <ReplyRow reply={reply} />
+              ))}
+            </li>
+          </li>
+        </div>
+      );
   }
 }
 const itemStyle = {

@@ -62,6 +62,7 @@ export default class AllMessages extends React.Component {
     return (
       <div>
         <button onClick={this.postMsg}>Post a new Message</button>
+        <ul>
         {this.state.messages.map(message => (
           <MessagesRow
             key={message._id}
@@ -69,6 +70,7 @@ export default class AllMessages extends React.Component {
             deleteMsg={this.deleteMsg} username={this.props.username} usernameSU = {this.props.usernameSU}
           />
         ))}
+        </ul>
       </div>
     );
   }
