@@ -15,10 +15,13 @@ export default class AllMessages extends React.Component {
     // check update state to render automatically
   }
   postMsg = () => {
-    // get username first and check if it's null not signed in will handle later
+    if(!(this.props.username)&& (!this.props.usernameSU)){ // alerting if not signed in
+      alert('please sign in/ sign up to reply to messages')
+      return 
+    }
     const msg = prompt("type your message:");
     const user = this.props.username? this.props.username: this.props.usernameSU
-    console.log(user+'hhhhh')
+   
 
     axios
       .post(`http://localhost:5000/postMessage`, {
