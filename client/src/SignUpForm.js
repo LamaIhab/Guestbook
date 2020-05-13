@@ -1,11 +1,13 @@
 import React from "react";
 import axios from "axios";
-
+import {Link,BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
+import MessagesPage from './MessagesPage'
 export default class SignUpForm extends React.Component {
   state = {
     userName: "",
     displayName: "",
-    password: ""
+    password: "",
+    signup:null
   };
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -24,15 +26,25 @@ export default class SignUpForm extends React.Component {
       })
       .then(res => {
         if (res.data.msg === "Signing up was successful") {
-          // go to another page will handle later
-        } else alert(res.data.msg);
+          this.setState({signup:'/messages'})
+
+          
+        } 
+        alert(res.data.msg);
       })
       .catch(err => {
         alert(err.data.msg);
       });
   };
   render() {
-    return (
+    if(this.state.signup){
+      return(
+        <MessagesPage />
+
+      )
+    }
+    
+    else return (
       <div>
         <form onSubmit={this.signUp}>
           <label>Full Name</label>

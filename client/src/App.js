@@ -64,6 +64,7 @@ const message = {
   textAlign:'center',
   fontFamily:'Ariel',
   fontStyle:'Italic',
+  color:'#E6E6FA',
 
   padding:'135px',
   flex:100,

@@ -35,7 +35,7 @@ export default class Header extends React.Component{
 }
 
 const headerStyle={
-    background:'#E6E6FA',
+    background:'#000000',
     color:'#e5e8e8',
     textAlign:'center',
     padding:'10px',

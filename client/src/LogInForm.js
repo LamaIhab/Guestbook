@@ -26,9 +26,9 @@ export default class LogInForm extends React.Component {
       .then(res => {
         if (res.data.msg === "signing in successfull!!") {
          this.setState({loggedin:true})
-        } else {
+        } 
           alert(res.data.msg);
-        }
+        
       })
       .catch(err => {
         console.error(err);
