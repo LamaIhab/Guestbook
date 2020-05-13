@@ -18,7 +18,13 @@ export default class MessagesRow extends React.Component {
       this.setState({ replies: res.data.data });
     });
   }
-
+  getDate=()=>{
+    const arr = this.state.time.split('')
+    let newDate = ''
+    newDate+= arr[11]+arr[12]+arr[13]+arr[14]+arr[15]+' '+arr[8]+arr[9]+'/'+arr[5]+arr[6]+'/'+arr[0]+arr[1]+arr[2]+arr[3]                           // day month year hour minute
+    return newDate
+   
+}
   editMsg = () => {
     const edit = prompt("edit your message:", this.state.description); // will get username from signed in later
     if (edit === "" || edit === null) {
@@ -90,7 +96,7 @@ export default class MessagesRow extends React.Component {
         <div style={itemStyle}>
           @
             {this.state.username}:<br/>{this.state.description}<br/>
-           <p style={dateStyle}>{this.state.time}</p>
+           <p style={dateStyle}>{this.getDate()}</p>
             <br />
             <button onClick={this.replyMsg}>Reply</button>
             <hr
@@ -121,7 +127,7 @@ export default class MessagesRow extends React.Component {
          @
             {this.state.username}:<br/>{this.state.description}
             <br />
-           <p style={dateStyle}>{this.state.time}</p>
+           <p style={dateStyle}>{this.getDate()}</p>
             <br />
             <button onClick={this.editMsg}>Edit</button>
             <button onClick={this.replyMsg}>Reply</button>
