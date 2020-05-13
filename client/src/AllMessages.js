@@ -16,7 +16,7 @@ export default class AllMessages extends React.Component {
   }
   postMsg = () => {
     if(!(this.props.username)&& (!this.props.usernameSU)){ // alerting if not signed in
-      alert('please sign in/ sign up to reply to messages')
+      alert('please sign in/ sign up to post a message')
       return 
     }
     const msg = prompt("type your message:");

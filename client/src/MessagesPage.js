@@ -5,7 +5,7 @@ import Header from './Header'
 export default class MessagesPage extends React.Component{
     
     render(){
-        console.log(this.props.username+'msgpage')
+        //console.log(this.props.username+'msgpage')
         return(
             <div>
            

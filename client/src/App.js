@@ -51,7 +51,7 @@ home=()=>{
       <div >
         <Header logIn = {this.logIn} signUp = {this.signUp} home={this.home}/>
         <p style = {message}>Welcome to Guest Book</p>
-        <Link onClick={this.gotoMsgs}>get started and see what our guests are saying</Link>
+        <Link style={getStarted} onClick={this.gotoMsgs}>EXPLORE NOW!!</Link>
        
    
         
@@ -64,7 +64,7 @@ const message = {
   textAlign:'center',
   fontFamily:'Ariel',
   fontStyle:'Italic',
-  color:'#E6E6FA',
+  color:'#87CEFA',
 
   padding:'135px',
   flex:100,
@@ -74,15 +74,18 @@ const message = {
 }
 const getStarted = {
   textAlign:'center',
+  fontFamily:'Ariel',
+  fontStyle:'Italic',
+  color:'#87CEEB',
+
+  padding:'530px',
+  flex:20,
+  flexDirection:'coloumn',
+  
+  fontSize:30,
+  fontWeight:'bold'
 
 }
-// const container= {
-//   backgroundImage: `url(${`https://media-exp1.licdn.com/dms/image/C560BAQFiIh9Q4ja0jA/company-logo_200_200/0?e=1597276800&v=beta&t=E_o59DWkxrK4PsoWgCWMSmRQFUqxWOtijg0YwfpviyQ`})`,
-//   backgroundPosition: 'right',
-//   backgroundSize: 'cover',
-//   backgroundRepeat: 'no-repeat',
-//   width: '50vw',
-//   height: '15vh'
-// }
+
 
 export default App;
