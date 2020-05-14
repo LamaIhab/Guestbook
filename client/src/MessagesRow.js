@@ -15,7 +15,7 @@ export default class MessagesRow extends React.Component {
 
   componentDidMount() {
     axios.get(`http://localhost:5000/getReplies/${this.state.id}`).then(res => {
-      this.setState({ replies: res.data.data });
+      this.setState({ replies: res.data.data.reverse() });
     });
   }
   getDate = () => {
@@ -86,8 +86,9 @@ export default class MessagesRow extends React.Component {
         })
         .then(res => {
           if (res.data.msg === "reply was posted successfully") {
+           
             this.setState({
-              replies: [...this.state.replies, res.data.data]
+              replies: [...this.state.replies,res.data.data]
             });
             //console.log(this.state.replies)
           }
@@ -100,8 +101,9 @@ export default class MessagesRow extends React.Component {
   };
 
   render() {
+    console.log(this.state.signedup)
     if (
-      (!this.state.signedin && !this.props.signedup) ||
+      (!this.state.signedin && !this.state.signedup) ||
       (this.state.signedin !== this.state.username &&
         this.state.signedup !== this.state.username)
     ) {

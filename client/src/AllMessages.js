@@ -10,7 +10,7 @@ export default class AllMessages extends React.Component {
   // WRITE A MESSAGE FUNCTION HERE
   componentDidMount() {
     axios.get("http://localhost:5000/getMessages").then(res => {
-      this.setState({ messages: res.data.data });
+      this.setState({ messages: res.data.data.reverse() });
     });
     // check update state to render automatically
   }
@@ -30,7 +30,7 @@ export default class AllMessages extends React.Component {
       })
       .then(res => {
         if (res.data.msg === "Message posted successfully!!") {
-          this.setState({ messages: [...this.state.messages, res.data.data] });
+          this.setState({ messages: [res.data.data, ...this.state.messages] });
         }
         alert(res.data.msg);
       })

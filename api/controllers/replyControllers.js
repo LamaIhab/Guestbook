@@ -13,6 +13,7 @@ const postReply = async(req,res)=>{
         return res.json({msg:'message does not exist'})
         const {username,description} = req.body
         const reply = await Reply.create({username:username,description:description,messageID:req.params.id})
+        console.log(reply)
         return res.json({msg:'reply was posted successfully',data:reply})
 
 
