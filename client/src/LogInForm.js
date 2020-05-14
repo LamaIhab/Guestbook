@@ -1,12 +1,17 @@
 import React from "react";
 import axios from "axios"; // to call backend
-import {Link,BrowserRouter as Router,Route,Redirect} from 'react-router-dom';
-import MessagesPage from './MessagesPage'
+import {
+  Link,
+  BrowserRouter as Router,
+  Route,
+  Redirect
+} from "react-router-dom";
+import MessagesPage from "./MessagesPage";
 export default class LogInForm extends React.Component {
   state = {
     userName: "",
     password: "",
-    loggedin:null
+    loggedin: null
   };
 
   onChange = e => {
@@ -25,69 +30,69 @@ export default class LogInForm extends React.Component {
       })
       .then(res => {
         if (res.data.msg === "signing in successfull!!") {
-         this.setState({loggedin:true})
-        } 
-          alert(res.data.msg);
-        
+          this.setState({ loggedin: true });
+        }
+        alert(res.data.msg);
       })
       .catch(err => {
         console.error(err);
       });
   };
   render() {
-    if(this.state.loggedin){
-      return (
-      <MessagesPage username={this.state.userName}/>
-      )
+    if (this.state.loggedin) {
+      return <MessagesPage username={this.state.userName} />;
     }
-   
+
     return (
       <form onSubmit={this.logIn}>
         <label>
-          <p style={inputStyle}><input 
-            name="userName"
-            type="text"
-            placeholder="username"
-            value={this.state.userName}
-            onChange={this.onChange}
-          /></p>
+          <p style={inputStyle}>
+            <input
+              name="userName"
+              type="text"
+              placeholder="username"
+              value={this.state.userName}
+              onChange={this.onChange}
+            />
+          </p>
         </label>
         <label>
           <br />
-          
-          <p style={inputStyle}><input
-            name="password"
-            type="text"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.onChange}
-          /></p>
+
+          <p style={inputStyle}>
+            <input
+              name="password"
+              type="text"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.onChange}
+            />
+          </p>
         </label>
-     
-    
-        <p style={inputStyle}><input style={btnStyle} type="submit" value="Login" /></p>
+
+        <p style={inputStyle}>
+          <input style={btnStyle} type="submit" value="Login" />
+        </p>
       </form>
     );
   }
 }
 
 const inputStyle = {
-  textAlign:'center',
-  fontFamily:'Ariel',
-  fontStyle:'Italic',
-  color:'#87CEFA',
+  textAlign: "center",
+  fontFamily: "Ariel",
+  fontStyle: "Italic",
+  color: "#87CEFA",
 
-  padding:'1px',
- 
-  
+  padding: "1px",
+
   //fontSize:30,
-  fontWeight:'bold'
+  fontWeight: "bold"
   //fontWeight:'bold'
-}
+};
 
-const btnStyle={
-  background:'#A9A9A9',
-  color:'#',
+const btnStyle = {
+  background: "#A9A9A9",
+  color: "#"
   //:'10px'
-  
-  }
+};

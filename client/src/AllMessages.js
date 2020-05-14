@@ -15,13 +15,15 @@ export default class AllMessages extends React.Component {
     // check update state to render automatically
   }
   postMsg = () => {
-    if(!(this.props.username)&& (!this.props.usernameSU)){ // alerting if not signed in
-      alert('please sign in/ sign up to post a message')
-      return 
+    if (!this.props.username && !this.props.usernameSU) {
+      // alerting if not signed in
+      alert("please sign in/ sign up to post a message");
+      return;
     }
     const msg = prompt("type your message:");
-    const user = this.props.username? this.props.username: this.props.usernameSU
-   
+    const user = this.props.username
+      ? this.props.username
+      : this.props.usernameSU;
 
     axios
       .post(`http://localhost:5000/postMessage`, {
@@ -40,15 +42,15 @@ export default class AllMessages extends React.Component {
   };
 
   deleteMsg = id => {
-  
-    const user = this.props.username? this.props.username: this.props.usernameSU
-    console.log(user+'hhhhh')
+    const user = this.props.username
+      ? this.props.username
+      : this.props.usernameSU;
+
     axios
       .post(`http://localhost:5000/deleteMessage/${id}`, {
         username: user
       })
       .then(res => {
-        //console.log(this.state.username);
         if (res.data.msg === "Message deleted successfully") {
           this.setState({
             messages: [
@@ -61,42 +63,56 @@ export default class AllMessages extends React.Component {
   };
 
   render() {
-    //console.log(this.state.messages)
+    if (this.state.messages.length === 0) {
+      return (
+        <div>
+          <p style={message}>Join the Conversations</p>
+          <p style={message}>No new messages yet</p>
+          <p style={message}>
+            <button style={btnStyle} onClick={this.postMsg}>
+              Post a new Message
+            </button>
+          </p>
+        </div>
+      );
+    }
     return (
       <div>
         <p style={message}>Join the Conversations</p>
-        <p style={message}><button style={btnStyle}onClick={this.postMsg}>Post a new Message</button></p>
-        
+        <p style={message}>
+          <button style={btnStyle} onClick={this.postMsg}>
+            Post a new Message
+          </button>
+        </p>
+
         {this.state.messages.map(message => (
           <MessagesRow
             key={message._id}
             message={message}
-            deleteMsg={this.deleteMsg} username={this.props.username} usernameSU = {this.props.usernameSU}
+            deleteMsg={this.deleteMsg}
+            username={this.props.username}
+            usernameSU={this.props.usernameSU}
           />
         ))}
-        
       </div>
     );
   }
 }
 
 const message = {
-  textAlign:'center',
+  textAlign: "center",
   //fontFamily:'Ariel',
- fontStyle:'Italic',
-color:'#87CEFA',
+  fontStyle: "Italic",
+  color: "#87CEFA",
 
-  padding:'1px',
-  
- 
-  
-  fontSize:35,
-  fontWeight:'bold'
+  padding: "1px",
+
+  fontSize: 35,
+  fontWeight: "bold"
   //fontWeight:'bold'
-}
-const btnStyle={
-  background:'#A9A9A9',
-  color:'#',
+};
+const btnStyle = {
+  background: "#A9A9A9",
+  color: "#"
   //:'10px'
-  
-  }
+};

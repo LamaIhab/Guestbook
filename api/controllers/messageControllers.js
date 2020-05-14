@@ -73,8 +73,6 @@ const deleteMessage = async (req, res) => {
     if (!message) {
       return res.json({ msg: "this message does not exist" });
     }
-    console.log(message.username);
-    console.log(user);
 
     if (message.username !== user)
       return res.json({ msg: "you can only delete your own message" });

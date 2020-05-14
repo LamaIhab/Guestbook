@@ -1,15 +1,13 @@
-import React from 'react'
-import LogInForm from './LogInForm'
-import Header from './Header'
+import React from "react";
+import LogInForm from "./LogInForm";
+import Header from "./Header";
 
-export default class LogInPage extends React.Component{
-    render(){
-        return(
-            <div>
-           
-            <LogInForm />
-            </div>
-            
-        )
-    }
+export default class LogInPage extends React.Component {
+  render() {
+    return (
+      <div>
+        <LogInForm />
+      </div>
+    );
+  }
 }

@@ -8,7 +8,7 @@ export default class MessagesRow extends React.Component {
     description: this.props.message.description,
     time: this.props.message.time,
     id: this.props.message._id,
-    replies: [], // render those under message handle later
+    replies: [],
     signedin: this.props.username,
     signedup: this.props.usernameSU
   };
@@ -86,11 +86,9 @@ export default class MessagesRow extends React.Component {
         })
         .then(res => {
           if (res.data.msg === "reply was posted successfully") {
-           
             this.setState({
-              replies: [...this.state.replies,res.data.data]
+              replies: [...this.state.replies, res.data.data]
             });
-            //console.log(this.state.replies)
           }
           alert(res.data.msg);
         })
@@ -101,7 +99,6 @@ export default class MessagesRow extends React.Component {
   };
 
   render() {
-    console.log(this.state.signedup)
     if (
       (!this.state.signedin && !this.state.signedup) ||
       (this.state.signedin !== this.state.username &&
@@ -115,14 +112,14 @@ export default class MessagesRow extends React.Component {
           <br />
           <p style={dateStyle}>{this.getDate()}</p>
           <br />
-          <button style={btnStyle} onClick={this.replyMsg}>Reply</button>
-          <hr
-            style={lineStyle
-           
-            }
-          />
-          <h1 style={{color:'#483D8B',fontSize:16}}>Replies:({this.state.replies.length})</h1>
-        
+          <button style={btnStyle} onClick={this.replyMsg}>
+            Reply
+          </button>
+          <hr style={lineStyle} />
+          <h1 style={{ color: "#483D8B", fontSize: 16 }}>
+            Replies:({this.state.replies.length})
+          </h1>
+
           {this.state.replies.map(reply => (
             <ReplyRow reply={reply} />
           ))}
@@ -131,26 +128,30 @@ export default class MessagesRow extends React.Component {
     } else
       return (
         <div style={itemStyle}>
-         <p style={nameStyle}> @{this.state.username}:</p>
-         <p style={msgStyle}>{this.state.description}</p>
+          <p style={nameStyle}> @{this.state.username}:</p>
+          <p style={msgStyle}>{this.state.description}</p>
           <br />
           <p style={dateStyle}>{this.getDate()}</p>
           <br />
-          <button style={btnStyle} onClick={this.editMsg}>Edit</button>
-          <button style={btnStyle} onClick={this.replyMsg}>Reply</button>
-          <button style={btnStyle}  onClick={this.props.deleteMsg.bind(this, this.state.id)}>
+          <button style={btnStyle} onClick={this.editMsg}>
+            Edit
+          </button>
+          <button style={btnStyle} onClick={this.replyMsg}>
+            Reply
+          </button>
+          <button
+            style={btnStyle}
+            onClick={this.props.deleteMsg.bind(this, this.state.id)}
+          >
             Delete
           </button>
-          <hr
-            style={lineStyle
-              
-            }
-          />
-           <h1 style={{color:'#483D8B',fontSize:16}}>Replies:({this.state.replies.length})</h1>
+          <hr style={lineStyle} />
+          <h1 style={{ color: "#483D8B", fontSize: 16 }}>
+            Replies:({this.state.replies.length})
+          </h1>
           {this.state.replies.map(reply => (
             <ReplyRow reply={reply} />
           ))}
-      
         </div>
       );
   }
@@ -160,7 +161,7 @@ const itemStyle = {
 };
 const dateStyle = {
   fontSize: 15,
-  color:'	#191970	',
+  color: "	#191970	",
 
   fontFamily: "Ariel"
 };
@@ -168,35 +169,26 @@ const lineStyle = {
   height: 0.7,
   color: "FF4500",
   backgroundColor: "#E6E6FA"
-}
-const btnStyle={
-  background:'#A9A9A9',
-  color:'#',
+};
+const btnStyle = {
+  background: "#A9A9A9",
+  color: "#"
   //:'10px'
-  
-  }
+};
 
-  const nameStyle = {
-    
-    fontFamily:'Ariel',
-    fontStyle:'Italic',
-    color:'#BA55D3',
-  
-  
-   
-    fontSize:20,
-    fontWeight:'bold'
-  }
+const nameStyle = {
+  fontFamily: "Ariel",
+  fontStyle: "Italic",
+  color: "#BA55D3",
 
-  const msgStyle = {
-    
-    fontFamily:'Ariel',
-  
-    color:'#',
-  
-  
-   
-    fontSize:19,
-   
-  }
+  fontSize: 20,
+  fontWeight: "bold"
+};
 
+const msgStyle = {
+  fontFamily: "Ariel",
+
+  color: "#",
+
+  fontSize: 19
+};
